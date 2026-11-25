@@ -15,6 +15,9 @@ JOKE = (
 
 
 def main() -> None:
+    # Runtime validation: output must be a non-empty joke within limits.
+    if not 1 <= len(JOKE) <= 200:
+        raise ValueError(f"joke length {len(JOKE)} out of range 1-200")
     out_dir = os.environ.get("MAKEFUN_OUTPUT_DIR") or "/output"
     os.makedirs(out_dir, exist_ok=True)
     path = os.path.join(out_dir, "entry.txt")
